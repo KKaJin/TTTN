@@ -1,7 +1,7 @@
 from flask import Flask, send_from_directory
 from flask_cors import CORS
 import os
-from routes import geometry, route, search, markers
+from routes import geometry, route, search, markers, info
 
 app = Flask(
     __name__,
@@ -14,6 +14,7 @@ app.register_blueprint(geometry.bp)
 app.register_blueprint(route.bp)
 app.register_blueprint(search.bp)
 app.register_blueprint(markers.bp)
+app.register_blueprint(info.bp)
 # url_prefix='/api'
 
 @app.route('/')

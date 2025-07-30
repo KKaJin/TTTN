@@ -16,20 +16,15 @@ def read_geojson_folder(folder):
 
 @bp.route('/api/geometry/all')
 def get_all_geojson():
-    try:
-        provinces = read_geojson_folder(PROVINCE_DIR)
-        communes = read_geojson_folder(COMMUNE_DIR)
-        return jsonify({'province': provinces, 'commune': communes})
-    except Exception as e:
-        return jsonify({'error': str(e)})
+    provinces = read_geojson_folder(PROVINCE_DIR)
+    communes = read_geojson_folder(COMMUNE_DIR)
+    return jsonify({'province': provinces, 'commune': communes})
 
 @bp.route('/api/geometry/commune')
 def get_commune_by_province():
     province_name = request.args.get('province')
     file_path = os.path.join(COMMUNE_DIR, f'{province_name}.geojson')
-    try:
-        with open(file_path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-        return jsonify(data)
-    except Exception as e:
-        return jsonify({'error': str(e)})
+    with open(file_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    return jsonify(data)
+
