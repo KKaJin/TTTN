@@ -33,7 +33,7 @@ def get_commune_info_f(maTinh_BNV):
             })
     return jsonify(infoXa)
 
-# Lấy thông tin 1 xã
+# Lấy thông tin 1 xã nhưng chỉ lấy thông tin cần thiết
 @bp.route('/api/infocommune/<maTinh_BNV>/<maXa_BNV>', methods=['GET'])
 def get_commune_info_1f(maTinh_BNV, maXa_BNV):
     with open(DATA_FILE, 'r', encoding='utf-8') as f:
@@ -50,5 +50,6 @@ def get_commune_info_1f(maTinh_BNV, maXa_BNV):
                 "danSo": p.get("danSo"),
                 "dienTich": p.get("dienTich")
             })
+
 
 
