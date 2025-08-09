@@ -5,7 +5,7 @@ bp = Blueprint('infocommune', __name__)
 DATA_FILE = os.path.join(os.path.dirname(__file__), '..', 'data', 'DiaPhan_Xa_2025.geojson')
 
 # Lấy hết thông tin trong file xã theo mã tỉnh
-@bp.route('/api/infocommune/<maTinh_BNV>' , methods=['GET'])
+@bp.route('/api/infocommune/communes/<maTinh_BNV>' , methods=['GET'])
 def get_commune_all(maTinh_BNV):
     with open(DATA_FILE , 'r', encoding='utf-8') as f:
         data = json.load(f)
@@ -50,6 +50,5 @@ def get_commune_info_1f(maTinh_BNV, maXa_BNV):
                 "danSo": p.get("danSo"),
                 "dienTich": p.get("dienTich")
             })
-
 
 

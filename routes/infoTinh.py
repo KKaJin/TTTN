@@ -12,7 +12,7 @@ def get_province_all():
     return jsonify(data)
 
 # Lấy thông tin 1 tỉnh trong file
-@bp.route('/api/infoprovince/<maTinh_BNV>', methods=['GET'])
+@bp.route('/api/infoprovince/provinces/<maTinh_BNV>', methods=['GET'])
 def get_province_info_1(maTinh_BNV):
     with open(DATA_FILE, 'r', encoding='utf-8') as f:
         data = json.load(f)
